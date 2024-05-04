@@ -13,7 +13,7 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Submit Video</button>
+                <button type="submit">Submit Video!</button>
             </form>
             {% for post in old_posts %}
                 <div id = "old_posts" data-id = "{{ post.id }}">
