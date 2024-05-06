@@ -1,0 +1,15 @@
+{% extends "auctions/layout.html" %}
+{% load templatetags %}
+{% block body %}
+    <h1>Category</h1>
+	<ul>
+		<pretty_boxes>
+			<div>
+				{% for listbit in items_in_list %}
+                <!-- cs50 chatbot helped tweak the line below for the intended purpose -->
+                <li><a href = "{% url 'listing' listbit.id %}">{{ listbit.title }}</a>
+                </li>{% endfor %}
+			</div>
+		</pretty_boxes>
+	</ul>
+{% endblock %}

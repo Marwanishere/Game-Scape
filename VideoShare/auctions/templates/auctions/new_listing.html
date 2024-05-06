@@ -1,0 +1,34 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1>Make a new listing</h1>
+    <div>
+        <!-- form pseudocode obtained from cs50 chatbot -->
+        <!-- enctype thing in form introduced from cs50.ai as a sol to image problem -->
+        <form method = "post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.user.errors }}
+            {{ form.user.label_tag }}
+            {{ form.user }}
+            {{ form.title.errors }}
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.description.errors }}
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {{ form.is_open.errors }}
+            {{ form.is_open.label_tag }}
+            {{ form.is_open }}
+            {{ form.category.errors }}
+            {{ form.category.label_tag }}
+            {{ form.category }}
+            {{ form.image.errors }}
+            {{ form.image.label_tag }}
+            {{ form.image }}
+            {{ form.initial_bid.errors }}
+            {{ form.initial_bid.label_tag }}
+            {{ form.initial_bid }}
+            <button type = "submit">Enter</button>>
+        </form>
+    </div>
+{% endblock %}
