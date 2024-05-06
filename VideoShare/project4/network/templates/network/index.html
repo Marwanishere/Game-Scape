@@ -12,7 +12,10 @@
             <!-- below form made with the assistance of cs50 chatbot -->
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.video.label_tag }}
+                {{ form.video }}
+                <input type="file" id="video-file" accept="video/*">
+
                 <button type="submit">Submit Video!</button>
             </form>
             {% for post in old_posts %}

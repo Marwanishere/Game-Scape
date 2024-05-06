@@ -1,3 +1,15 @@
+let formDat = new FormData();
+formDat.append('video', document.querySelector('#video-file').files[0]);
+
+fetch('/npost', {
+    method: 'POST',
+    headers: {
+        'X-CSRFToken': getCookie('csrftoken'),
+    },
+    body: formDat
+})
+// above is not yet valid and needs work so that it fits my code i believe.
+// designed with the help of cs50.ai chatbot
 document.addEventListener('DOMContentLoaded', function() {
     console.log("JavaScript finally working")
     document.querySelector('#submit-post').onclick = (e) => {
