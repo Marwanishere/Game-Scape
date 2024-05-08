@@ -1,9 +1,8 @@
 {% extends "auctions/layout.html" %}
 {% load templatetags %}
 {% block body %}
-    <h1>Active Listings</h1>
-	<ul>
-		<pretty_boxes>
+    <h1>Holiday Destinations:</h1>
+	<pretty_boxes>
 			<!-- code for function below acquired from cs50 chatbot prompting -->
 			{% for listing in Listings %}
 				<div id = active_listings>
@@ -18,6 +17,5 @@
 					<p>Current Bid: £{{ listing.current_bid }}</p>
 				</div>
 			{% endfor %}
-		</pretty_boxes>
-	</ul>
+	</pretty_boxes>
 {% endblock %}

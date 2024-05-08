@@ -5,11 +5,18 @@ h2 {
     color   : black;
 }
 h1 {
-    color   : darkred;
+    color   : black;
 }
-pretty_boxes {
-    color : rgb(11, 24, 32);
-    border: 8px rgb(7, 7, 44);
+h6 {
+    color   : black;
+}
+.nav-link {
+    color: black;
+    font-weight: bold;
+}
+#pretty_boxes {
+    color : rgb(225, 4, 4);
+    border: 8px rgba(202, 8, 8, 0.922);
     border-radius: 5%;
     padding: 2.5%;
 
@@ -18,8 +25,8 @@ p {
     font-style: inherit;
 }
 #active_listings{
-    background-color: #baced4;
-    padding: 10px;
+    background-color: #cb1010;
+    padding: 8px;
     margin-bottom: 10px;
     animation-name: hide;
     animation-duration: 2s;
@@ -28,4 +35,14 @@ p {
     border-radius: 2%;
     margin-left: 5px;
     
+}
+#active_listings a {
+    color:rgb(4, 0, 0)
+    
+}
+#active_listings:hover{
+    background-color: #a10c0c;
+}
+body{
+    background-color: #222222;
 }
