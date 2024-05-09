@@ -11,8 +11,6 @@ from .models import User
 from .models import Tweet
 from .models import FS
 
-
-
 def index(request):
     pageNumber = int(request.GET.get('page', 1))
     nextPageUrl = '?page=' + str(pageNumber + 1)
