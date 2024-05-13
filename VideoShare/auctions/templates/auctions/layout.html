@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}Auctions{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <h1>Auctions:</h1>
         <div>
             <h6>
+                <img src="{% static 'auctions/012.jpg' %}" alt="game reviews logo" width="100px ">
+
                 {% if user.is_authenticated %}
                     Signed in as <strong>{{ user.username }}</strong>.
                 {% else %}
@@ -30,7 +30,7 @@
                     <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'new_listing' %}">Sell Item</a>
+                    <a class="nav-link" href="{% url 'new_listing' %}">List A Game</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'previous_listings' %}">Previous Listings</a>
