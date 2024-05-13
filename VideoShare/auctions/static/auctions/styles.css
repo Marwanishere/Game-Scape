@@ -5,7 +5,7 @@ h2 {
     color   : black;
 }
 h1 {
-    color   : black;
+    color   : rgb(186, 58, 58);
 }
 h6 {
     color   : black;
@@ -13,6 +13,9 @@ h6 {
 .nav-link {
     color: black;
     font-weight: bold;
+}
+.nav-link :hover {
+    color:#ff9195
 }
 #pretty_boxes {
     color : rgb(225, 4, 4);
