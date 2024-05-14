@@ -23,20 +23,21 @@ p {
     padding: 8px;
     margin-bottom: 10px;
     margin-right: 10px;
-    display: flex;
-    flex-wrap: wrap;
     
 }
-#active_listings a {
+.active_listings a {
     color:rgb(4, 0, 0)
     
 }
-#active_listings:hover{
-    background-color: rgb(37, 10, 174);
+.active_listings:hover{
+    background-color: rgb(9, 65, 144);
 }
 body{
     background-color: #090714;
 }
-#id_comment{
-    color: rgb(12, 79, 172);;
+.parentContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 10px;
+
 }
