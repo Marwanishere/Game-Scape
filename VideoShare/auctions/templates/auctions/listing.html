@@ -12,14 +12,13 @@
     </script>
     <h2>Listing</h2>
 	<ul>
-        <li><h2>{{ listing.title }}</h2>
+        <li><h2 style="color: rgb(29, 7, 138);">{{ listing.title }}</h2>
         <img src="{{ listing.image.url }}" style="max-width: 300px; max-height: 300px;">
-        <p>{{ listing.description }}</p>
-        <p>Posted by: {{ listing.user }}</p>
-        <p>On sale: {{ listing.is_open}}</p>
-        <p>Category: {{ listing.category }}</p>
-        <p>Initial Bid: £{{ listing.initial_bid }}</p>
-        <p>Current Bid: £{{ listing.current_bid }}</p>
+        <p style="color: rgb(45, 24, 146);">{{ listing.description }}</p>
+        <p style="color: rgb(45, 24, 146); font-style: italic;">Posted by: {{ listing.user }}</p>
+        <p  style="color: rgb(45, 24, 146);">Category: {{ listing.category }}</p>
+        <p  style="color: rgb(45, 24, 146);">Release Price: £{{ listing.initial_bid }}</p>
+        <p  style="color: rgb(45, 24, 146);">Current Price: £{{ listing.current_bid }}</p>
         {% if listing.winner %}
             <p>The winner is: {{ listing.winner.username }}</p>
         {% else %}
@@ -27,7 +26,7 @@
         {% endif %}
         <form method="post" action="{% url 'auction_closed' listing_id=listing.id %}">
             {% csrf_token %}
-            <button type = "submit">Close Bid</button>
+            <button type = "submit">Delete Game (will be placed in old games)</button>
         </form>
         <form action="{% url 'a2w' listing_id=listing.id %}" method="post">
             {% csrf_token %}
@@ -38,16 +37,16 @@
             {{ form.bid_amount.errors }}
             {{ form.bid_amount.label_tag }}
             {{ form.bid_amount }}
-            <button type = "submit">Enter Bid</button>
+            <button type = "submit">Enter Current Price</button>
         </form>
-            <form method="post" id = "Form1" >
+            <form method="post" id = "Form1"  >
                 {% csrf_token %}
                 {{ form }}
-                <button id = "Button1" type = "submit" >Save Comment</button>
+                <button id = "Button1" type = "submit" >Save </button>
             </form></li>
-        <p>
+        <p  style="color: rgb(12, 79, 172);">
             {% for comment in listing.comments.all %}
-                <li>Share thoughts: {{ comment.comment }}</li>
+                <li  style="color: rgb(12, 79, 172);">{{ comment.comment }}</li>
             {% endfor %}
         </p>
 	</ul>

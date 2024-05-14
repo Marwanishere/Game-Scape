@@ -2,41 +2,29 @@ body {
     padding: 10px;
 }
 h2 {
-    color   : black;
+    color   : rgb(0, 0, 0);
 }
 h1 {
-    color   : rgb(186, 58, 58);
+    color   : rgb(29, 7, 138);
 }
 h6 {
-    color   : black;
+    color   : rgb(29, 7, 138);
 }
 .nav-link {
-    color: black;
+    color: rgb(29, 7, 138);
     font-weight: bold;
 }
-.nav-link :hover {
-    color:#ff9195
-}
-#pretty_boxes {
-    color : rgb(225, 4, 4);
-    border: 8px rgba(202, 8, 8, 0.922);
-    border-radius: 5%;
-    padding: 2.5%;
 
-}
 p {
     font-style: inherit;
 }
-#active_listings{
-    background-color: #cb1010;
+.active_listings{
+    background-color: rgb(29, 7, 138);
     padding: 8px;
     margin-bottom: 10px;
-    animation-name: hide;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-play-state: paused;
-    border-radius: 2%;
-    margin-left: 5px;
+    margin-right: 10px;
+    display: flex;
+    flex-wrap: wrap;
     
 }
 #active_listings a {
@@ -44,8 +32,11 @@ p {
     
 }
 #active_listings:hover{
-    background-color: #a10c0c;
+    background-color: rgb(37, 10, 174);
 }
 body{
-    background-color: #222222;
+    background-color: #090714;
+}
+#id_comment{
+    color: rgb(12, 79, 172);;
 }

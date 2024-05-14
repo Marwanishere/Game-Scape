@@ -85,6 +85,7 @@ def new_listing_view(request):
             category = form.cleaned_data['category'], image = form.cleaned_data['image'],
             initial_bid = form.cleaned_data['initial_bid'])
             new_listing.save()
+            return render(request, 'auctions/index.html', {'form': form})
     else:
         form = AuctionListingForm()
     return render(request, 'auctions/new_listing.html', {'form': form})

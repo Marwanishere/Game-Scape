@@ -9,7 +9,7 @@
     <body>
         <div>
             <h6>
-                <img src="{% static 'auctions/012.jpg' %}" alt="game reviews logo" width="100px ">
+                <img src="{% static 'auctions/015.jpg' %}" alt="game reviews logo" width="100px" style="float: right;">
 
                 {% if user.is_authenticated %}
                     Signed in as <strong>{{ user.username }}</strong>.
@@ -27,9 +27,6 @@
                 </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'new_listing' %}">List A Game</a>
                 </li>
                 <li class="nav-item">
@@ -37,6 +34,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'watch' %}">Watchlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                 </li>
             {% else %}
                 <li class="nav-item">
