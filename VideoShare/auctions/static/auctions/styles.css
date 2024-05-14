@@ -23,6 +23,7 @@ p {
     padding: 8px;
     margin-bottom: 10px;
     margin-right: 10px;
+    border-radius: 15px; 
     
 }
 .active_listings a {
@@ -31,6 +32,8 @@ p {
 }
 .active_listings:hover{
     background-color: rgb(9, 65, 144);
+    border-radius: 10px; 
+    padding: 20px;
 }
 body{
     background-color: #090714;
