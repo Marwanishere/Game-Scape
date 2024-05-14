@@ -5,10 +5,10 @@
     <h1>Games: </h1>
 	<div class = parentContainer>
 		{% for listing in Listings %}
+		<!-- the grid spacing issues are due to the a -->
 			<div class = active_listings>
-				<a href="{% url 'listing' listing.id %}">
-				<h2>{{ listing.title }}</h2>
-				<img src="{{ listing.image.url }}" style="max-width: 300px; max-height: 300px;">
+				<h2><a href="{% url 'listing' listing.id %}">{{ listing.title }}</h2>
+				<img src="{{ listing.image.url }}" style="max-width: 300px; max-height: 300px;"></a>
 			</div>
 		{% endfor %}
 	</div>
