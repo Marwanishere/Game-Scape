@@ -8,45 +8,47 @@
     </head>
     <body>
         <div>
-            <h6>
+            <h4>
                 <img src="{% static 'auctions/015.jpg' %}" alt="game reviews logo" width="100px" style="float: right;">
 
                 {% if user.is_authenticated %}
-                    Signed in as <strong>{{ user.username }}</strong>.
+                    Signed in as <strong style="color: rgb(9, 65, 144);">{{ user.username }}</strong>
                 {% else %}
                     Not signed in
                 {% endif %}
-            </h6>
+            </h4>
         </div>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Games</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="{% url 'categories' %}">Categories</a>
+        <nav class="navbar navbar-expand-lg">
+            <ul class="nav">
+                <li class="nav-item bg-light rounded-pill mr-2">
+                    <a class="nav-link" href="{% url 'index' %}">Games</a>
                 </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'new_listing' %}">List A Game</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'previous_listings' %}">Old Games</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'watch' %}">Watchlist</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            {% endif %}
-        </ul>
+                <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'categories' %}">Genres</a>
+                    </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'new_listing' %}">List A Game</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'previous_listings' %}">Old Games</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'watch' %}">Watchlist</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
         <hr>
         {% block body %}
         {% endblock %}

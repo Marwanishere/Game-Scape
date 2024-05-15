@@ -183,16 +183,14 @@ def watch(request):
     return render(request, "auctions/watch.html", {'watchlist': lis})
 
 def a2w(request, listing_id):
-    #a2w stands for add (listing) to watchlist
     user = request.user
-    #the above line is used to associate the object with the user
     listing = AuctionListing.objects.get(id=listing_id)
+    # the line below tells the program which url the request came from
+    referer_url = request.META.get('HTTP_REFERER', '/')
     if not Watch.objects.filter(user=user, auction_listing=listing).exists():
-        #the above line checks if the listing is already in the users watch list and was made using cs50 chatbot
         neww = Watch(user=user, auction_listing= listing )
         neww.save()
-        #neww stands for new watch listing
-    return HttpResponse("Added to Watchlist")
+    return HttpResponse('<script>alert("Added to Watchlist!"); window.location.href="{}";</script>'.format(referer_url))
 
 def category_view(request, category):
     items_in_list = AuctionListing.objects.filter(category=category)

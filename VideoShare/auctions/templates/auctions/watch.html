@@ -8,7 +8,7 @@
 <!-- code for function below acquired from cs50 chatbot prompting -->
 				{% for listing in watchlist %}
 					<a href="{% url 'listing' listing.id %}">
-					<li><h2>{{ listing.title }}</h2>
+					<li><h6>{{ listing.title }}</h6>
 				</li>
 				{% endfor %}
 			</div>
