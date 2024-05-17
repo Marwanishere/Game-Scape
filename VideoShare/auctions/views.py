@@ -80,7 +80,7 @@ def new_listing_view(request):
         form = AuctionListingForm(request.POST, request.FILES)
         if form.is_valid():
             #the next line replaces all the fields in the auction listing model in models.py
-            new_listing = AuctionListing(user=form.cleaned_data['user'], title=form.cleaned_data['title'],
+            new_listing = AuctionListing(user=request.user, title=form.cleaned_data['title'],
             description=form.cleaned_data['description'],is_open=form.cleaned_data['is_open'],
             category = form.cleaned_data['category'], image = form.cleaned_data['image'],
             initial_bid = form.cleaned_data['initial_bid'])

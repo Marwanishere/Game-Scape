@@ -3,14 +3,9 @@
 {% block body %}
     <h1>Make a new listing</h1>
     <div>
-        <!-- form pseudocode obtained from cs50 chatbot -->
-        <!-- enctype thing in form introduced from cs50.ai as a sol to image problem -->
         <form method = "post" enctype="multipart/form-data">
-            <p style="color: rgb(29, 7, 138);">
+            <p style="color: rgb(9, 65, 144);">
             {% csrf_token %}
-            {{ form.user.errors }}
-            {{ form.user.label_tag }}
-            {{ form.user }}
             {{ form.title.errors }}
             {{ form.title.label_tag }}
             {{ form.title }}

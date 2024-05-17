@@ -8,6 +8,7 @@ class AuctionListingForm(forms.ModelForm):
     class Meta:
         model = AuctionListing
         fields = ['user','title', 'description','is_open','category','image','initial_bid']
+        exclude = ['user']
 
 class BidForm(forms.ModelForm):
     class Meta:
