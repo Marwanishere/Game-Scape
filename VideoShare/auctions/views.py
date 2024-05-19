@@ -133,8 +133,7 @@ def listing_view(request, listing_id):
             form = CommentForm(request.POST, request.FILES)  # Include request.FILES
             if form.is_valid():
                 listing = AuctionListing.objects.get(id=listing_id)
-                new_comment = Comment(user=request.user, comment=form.cleaned_data['comment'], auction_listing=listing)
-                
+                new_comment = Comment(user=request.user, comment=form.cleaned_data['comment'], auction_listing=listing, video = form.cleaned_data['video'], photo = form.cleaned_data['photo'])
                 # Check if 'video' and 'photo' are in form.cleaned_data before trying to access them
                 if 'video' in form.cleaned_data:
                     new_comment.video = form.cleaned_data['video']
