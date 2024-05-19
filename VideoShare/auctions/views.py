@@ -134,7 +134,8 @@ def listing_view(request, listing_id):
                 listing = AuctionListing.objects.get(id=listing_id)
                 new_comment = Comment(user=request.user, comment=form.cleaned_data['comment'], auction_listing=listing)
                 new_comment.save()
-                return render(request, 'auctions/listing.html', {'listing': listing})
+                form = CommentForm()
+                return render(request, 'auctions/listing.html', {'listing': listing, 'form':form})
             else:
                 return HttpResponse("Go back to index page then click on listing to submit another comment")
         else:
