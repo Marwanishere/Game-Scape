@@ -42,6 +42,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= "comment")
     auction_listing = models.ForeignKey(AuctionListing, on_delete=models.CASCADE, related_name="comments")
     comment = models.TextField()
+    video = models.FileField(blank=True)
+    photo = models.ImageField(blank=True)
 
 class Watch(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= "userlist" )

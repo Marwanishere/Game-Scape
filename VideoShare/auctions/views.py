@@ -127,12 +127,20 @@ def listing_view(request, listing_id):
         amount = bid.bid_amount
     else:
         amount = 0
+        # below section adapted from advice received from cs50.ai teaching assistant
     if request.method == 'POST':
         if request.user.is_authenticated:
-            form = CommentForm(request.POST)
+            form = CommentForm(request.POST, request.FILES)  # Include request.FILES
             if form.is_valid():
                 listing = AuctionListing.objects.get(id=listing_id)
                 new_comment = Comment(user=request.user, comment=form.cleaned_data['comment'], auction_listing=listing)
+                
+                # Check if 'video' and 'photo' are in form.cleaned_data before trying to access them
+                if 'video' in form.cleaned_data:
+                    new_comment.video = form.cleaned_data['video']
+                if 'photo' in form.cleaned_data:
+                    new_comment.photo = form.cleaned_data['photo']
+                
                 new_comment.save()
                 form = CommentForm()
                 return render(request, 'auctions/listing.html', {'listing': listing, 'form':form})
@@ -144,7 +152,7 @@ def listing_view(request, listing_id):
             return render(request, 'auctions/listing.html', {'form': form})
     else:
         form = CommentForm()
-        if request.user.is_authenticated: 
+        if request.user.is_authenticated:
             return render(request, 'auctions/listing.html', {'form': form,'listing': listing})
         else:
             return render(request, "auctions/not_in.html")
