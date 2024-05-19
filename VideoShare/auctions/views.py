@@ -142,8 +142,6 @@ def listing_view(request, listing_id):
                 
                 new_comment.save()
                 form = CommentForm()
-                print(new_comment.video.url)  # print the file URL
-                print(new_comment.photo.url)
                 return render(request, 'auctions/listing.html', {'listing': listing, 'form':form})
             else:
                 return HttpResponse("Go back to index page then click on listing to submit another comment")

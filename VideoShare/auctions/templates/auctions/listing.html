@@ -43,20 +43,24 @@
                 {% csrf_token %}
                 {{ form }}
                 <button id = "Button1" type = "submit" >Save </button>
-            </form></li>
+            </form>
+        </li>
+        <div class = parentContainer>
             <!-- the if code below was adapted using the help of cs50.ai -->
             {% for comment in listing.comments.all %}
-                {% if comment.video %}
-                    <video width="320" height="240" controls>
-                        <source src="{{ comment.video.url }}" type="video/mp4">
-                    </video>
+                <div class = active_listings>
+                    {% if comment.video %}
+                        <video width="320" height="240" controls>
+                            <source src="{{ comment.video.url }}" type="video/mp4">
+                        </video>
+                    {% endif %}
+                    {% if comment.photo %}
+                        <img src="{{ comment.photo.url }}" width="320" height="240">
                 {% endif %}
-                {% if comment.photo %}
-                    <img src="{{ comment.photo.url }}" width="320" height="240">
-            {% endif %}
-                <li  style="color: rgb(12, 79, 172);">{{ comment.comment }}</li>
-                <p>Posted by {{ comment.user.username }} </p>
+                    <p  style="color: rgb(0, 0, 0);">{{ comment.comment }}</p>
+                    <p style="font-size: small; font-weight: bold; ">Posted by {{ comment.user.username }} </p>
+                </div>
             {% endfor %}
-            <img src="{{ listing.image.url }}" style="max-width: 300px; max-height: 300px;">
+            </div>
 	</ul>
 {% endblock %}
