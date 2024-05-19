@@ -17,9 +17,8 @@ class AuctionListing(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField()
     category = models.CharField(max_length = 64)
-    #below 2 lines generated using cs50 ai assistance
-    image = models.ImageField(upload_to='')
-    initial_bid = models.DecimalField(max_digits=6, decimal_places=2)
+    image = models.ImageField(upload_to='media/')
+    initial_bid = models.DecimalField(max_digits=7, decimal_places=2)
     is_open = models.BooleanField(default=True)
     winner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", null=True, blank=True)
     def current_bid(self):
