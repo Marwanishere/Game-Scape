@@ -44,15 +44,20 @@
                 {{ form }}
                 <button id = "Button1" type = "submit" >Save </button>
             </form></li>
+            <!-- the if code below was adapted using the help of cs50.ai -->
             {% for comment in listing.comments.all %}
-                {% if comment.file %}
+                {% if comment.video %}
                     <video width="320" height="240" controls>
-                        <source src="{{ comment.file.url }}" type="video/mp4">
+                        <source src="{{ comment.video.url }}" type="video/mp4">
                     </video>
                 {% endif %}
+                {% if comment.photo %}
+                    <img src="{{ comment.photo.url }}" width="320" height="240">
+            {% endif %}
                 <li  style="color: rgb(12, 79, 172);">{{ comment.comment }}</li>
                 <p>Posted by {{ comment.user.username }} </p>
             {% endfor %}
+            <img src="{{ listing.image.url }}" style="max-width: 300px; max-height: 300px;">
         <!-- add post/review functionality whereby a user can add a post related to the game or a review of the game. 
             This should contain an option for a video file and pictures and a title and text as well as a timestamp 
             of when the post was made with the more recent posts surfacing to the top. -->
