@@ -16,7 +16,7 @@ from .forms import BidForm
 from .forms import CommentForm
 
 def index(request):
-    Listings = AuctionListing.objects.filter(is_open=True)
+    Listings = AuctionListing.objects.filter(is_open=True).order_by('-id')
     current_bids = {}
     for listing in Listings:
         bid = Bid.objects.filter(auction_listing=listing).order_by('-bid_amount').first()
@@ -85,7 +85,8 @@ def new_listing_view(request):
             category = form.cleaned_data['category'], image = form.cleaned_data['image'],
             initial_bid = form.cleaned_data['initial_bid'])
             new_listing.save()
-            return render(request, 'auctions/index.html', {'form': form})
+            Listings = AuctionListing.objects.filter(is_open=True).order_by('-id')
+            return render(request, 'auctions/index.html',{'Listings': Listings})
     else:
         form = AuctionListingForm()
     return render(request, 'auctions/new_listing.html', {'form': form})
