@@ -1,0 +1,66 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block body %}
+<!-- from cs50 chatbot on removing buttons after pressed, doesn't currently work -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("Form1").addEventListener("submit", function(){
+            document.getElementById("Button1").style.display = 'none';
+            });
+        });
+    </script>
+    <h2>Listing</h2>
+	<ul>
+        <li><h2 style="color: rgb(12, 79, 172);">{{ listing.title }}</h2>
+        <img src="{{ listing.image.url }}" style="max-width: 300px; max-height: 300px;">
+        <p style="color: rgb(12, 79, 172);">{{ listing.description }}</p>
+        <p style="color: rgb(12, 79, 172); font-style: italic;">Posted by: {{ listing.user }}</p>
+        <p  style="color: rgb(12, 79, 172);">Category: {{ listing.category }}</p>
+        <p  style="color: rgb(12, 79, 172);">Release Price: £{{ listing.initial_bid }}</p>
+        <p  style="color: rgb(12, 79, 172);">Current Price: £{{ listing.current_bid }}</p>
+        {% if listing.winner %}
+            <p>The winner is: {{ listing.winner.username }}</p>
+        {% else %}
+            <p>  </p>
+        {% endif %}
+        <form method="post" action="{% url 'auction_closed' listing_id=listing.id %}">
+            {% csrf_token %}
+            <button type = "submit">Delete Game (will be placed in old games)</button>
+        </form>
+        <form action="{% url 'a2w' listing_id=listing.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Add to Watchlist</button>
+        </form>
+        <form method="post" action="{% url 'current_price' listing.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.bid_amount.errors }}
+            {{ form.bid_amount.label_tag }}
+            {{ form.bid_amount }}
+            <button type = "submit">Enter Current Price</button>
+        </form>
+            <form method="post" id = "Form1" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button id = "Button1" type = "submit" >Save </button>
+            </form>
+        </li>
+        <div class = parentContainer>
+            <!-- the if code below was adapted using the help of cs50.ai -->
+            {% for comment in listing.comments.all %}
+                <div class = active_listings>
+                    {% if comment.video %}
+                        <video width="320" height="240" controls>
+                            <source src="{{ comment.video.url }}" type="video/mp4">
+                        </video>
+                    {% endif %}
+                    {% if comment.photo %}
+                        <img src="{{ comment.photo.url }}" width="320" height="240">
+                {% endif %}
+                    <p  style="color: rgb(0, 0, 0);">{{ comment.comment }}</p>
+                    <p style="font-size: small; font-weight: bold; ">Posted by {{ comment.user.username }} </p>
+                </div>
+            {% endfor %}
+            </div>
+	</ul>
+{% endblock %}
