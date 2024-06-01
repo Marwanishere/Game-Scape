@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <h4>
+                <img src="{% static 'auctions/015.jpg' %}" alt="game reviews logo" width="100px" style="float: right;">
+
+                {% if user.is_authenticated %}
+                    Signed in as <strong style="color: rgb(9, 65, 144);">{{ user.username }}</strong>
+                {% else %}
+                    Not signed in
+                {% endif %}
+            </h4>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <ul class="nav">
+                <li class="nav-item bg-light rounded-pill mr-2">
+                    <a class="nav-link" href="{% url 'index' %}">Games</a>
+                </li>
+                <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'categories' %}">Genres</a>
+                    </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'new_listing' %}">List A Game</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'previous_listings' %}">Old Games</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'watch' %}">Watchlist</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item bg-light rounded-pill mr-2">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        <hr>
+        {% block body %}
+        {% endblock %}
+    </body>
+    <script src="../../static/auctions/local.js"></script>
+</html>

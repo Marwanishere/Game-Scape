@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+{% load templatetags %}
+{% block body %}
+    <h1>Genres</h1>
+	<ul>
+		<pretty_boxes>
+			<div>
+				{% for category in categories %}
+				<li>
+				<!-- dont understand why i should use category.category, got this from cs50 chatbot -->
+				<a href="{% url 'category' category.category %}">{{ category.category }}</a></li>
+				{% endfor %}
+			</div>
+		</pretty_boxes>
+	</ul>
+	<script src="../../static/auctions/local.js"></script>	
+{% endblock %}

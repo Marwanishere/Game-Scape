@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+{% load templatetags %}
+{% block body %}
+<h1>Removed Games</h1>
+	<ul>
+		<pretty_boxes>
+			<div>
+	<!-- code for function below acquired from cs50 chatbot prompting -->
+				{% for listing in inactive_listings %}
+					<a href="{% url 'listing' listing.id %}">
+					<li><h6>{{ listing.title }}</h6>
+					</li>
+				{% endfor %}
+			</div>
+		</pretty_boxes>
+	</ul>
+{% endblock %}
